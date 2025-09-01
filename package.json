@@ -1,0 +1,16 @@
+{
+  "name": "cinneflix",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "live-server --port=5173 --no-browser",
+    "preview": "live-server --port=5173 --no-browser"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.55.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  }
+}

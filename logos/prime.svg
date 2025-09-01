@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300">
+  <rect width="1000" height="300" fill="#00A8E1"/>
+  <g fill="white">
+    <path d="M150 80h60c30 0 50 20 50 50s-20 50-50 50h-30v40h-30V80zm30 30v40h30c15 0 25-10 25-20s-10-20-25-20h-30z"/>
+    <path d="M280 80h80c25 0 45 20 45 45v50c0 25-20 45-45 45h-50V80zm30 30v70h50c10 0 15-5 15-15v-40c0-10-5-15-15-15h-50z"/>
+    <path d="M420 80h30v140h-30V80z"/>
+    <path d="M480 80h60l40 100 40-100h60v140h-30v-100l-35 85h-30l-35-85v100h-30V80z"/>
+    <path d="M720 80h80v30h-50v25h45v30h-45v25h50v30h-80V80z"/>
+  </g>
+  <g fill="#FF9900">
+    <path d="M100 250c-50 0-90-40-90-90s40-90 90-90 90 40 90 90-40 90-90 90zm0-150c-33 0-60 27-60 60s27 60 60 60 60-27 60-60-27-60-60-60z"/>
+    <path d="M70 160l15-15 15 15-15 15-15-15z"/>
+    <path d="M115 160l15-15 15 15-15 15-15-15z"/>
+    <path d="M60 180c0-5 5-10 10-10h60c5 0 10 5 10 10s-5 10-10 10H70c-5 0-10-5-10-10z"/>
+  </g>
+  <text x="500" y="270" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">video</text>
+</svg>

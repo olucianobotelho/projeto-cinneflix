@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300">
+  <rect width="1000" height="300" fill="#FF6B00"/>
+  <g fill="white">
+    <text x="150" y="120" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="start" fill="white">SporTV</text>
+    <path d="M150 150h200v10h-200v-10z"/>
+    <text x="150" y="200" font-family="Arial, sans-serif" font-size="24" font-weight="300" text-anchor="start" fill="white">PLAY</text>
+  </g>
+</svg>

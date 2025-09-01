@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300">
+  <rect width="1000" height="300" fill="#8B0000"/>
+  <g fill="white">
+    <text x="150" y="120" font-family="Arial, sans-serif" font-size="42" font-weight="bold" text-anchor="start" fill="white">TELECINE</text>
+    <path d="M150 140h300v5h-300v-5z"/>
+    <text x="150" y="180" font-family="Arial, sans-serif" font-size="20" font-weight="300" text-anchor="start" fill="white">PLAY</text>
+  </g>
+</svg>
