@@ -1785,8 +1785,8 @@ html {
     }
     
     .streaming-logo img {
-        max-width: 80px;
-        max-height: 40px;
+        max-width: 180px;
+        max-height: 100px;
         padding: 8px;
     }
     
@@ -1808,7 +1808,7 @@ html {
     }
     
     .proof-image {
-        width: min(90vw, 320px); /* imagens maiores e centralizadas */
+        width: min(190vw,820px); /* imagens maiores e centralizadas */
         height: auto;
     }
 }
@@ -1940,4 +1940,38 @@ html {
   .plans .plans-grid,
   .plans-grid { gap: 22px; }
   .video-container { margin: 8px auto 24px auto; padding-left: 12px; padding-right: 12px; }
+}
+
+/* Ajuste específico para telas até 468px
+   - Aumenta o tamanho das logos em 200% em relação ao bloco de 480px (de 180x100 -> 360x200)
+   - Altere os valores abaixo (max-width / max-height) para ajustar conforme necessário */
+@media (max-width: 468px) {
+  .streaming-logo img {
+    max-width: 90%;   /* antes: 180px (x2) */
+    max-height: 100%;  /* antes: 100px (x2) */
+    /* Dica: se quiser que as logos ocupem toda a largura disponível, use:
+       width: 100%; height: auto; e ajuste o grid para 1 coluna se necessário. */
+  }
+  /* Opcional: se as logos ficarem grandes demais para 2 colunas, descomente para 1 coluna
+  .streaming-grid { grid-template-columns: 1fr; }
+  */
+}
+
+/* Overrides finais para <=480px: ampliar logos em 200% e garantir 1 coluna
+   - Aplica no <img class="streaming-logo"> (e no .streaming-logo por compatibilidade)
+   - Define largura responsiva sem distorção e força 1 coluna no grid */
+@media (max-width: 480px) {
+  img.streaming-logo, .streaming-logo {
+    width: 360px;       /* 200% do tamanho anterior (~180px) */
+    max-width: 800px;    /* limita à largura da viewport */
+    height: auto;       /* evita distorção */
+    padding: 8px;       /* respiro ao redor da logo */
+  }
+
+  /* Garante 1 coluna para acomodar logos grandes no mobile */
+  .streamings .streaming-grid, .streaming-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 18px;
+  }
 }
