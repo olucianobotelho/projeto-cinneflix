@@ -48,22 +48,48 @@ function initSmoothAnimations() {
 
 // Função para inicializar lazy loading das imagens
 function initLazyLoading() {
-    const images = document.querySelectorAll('img');
-    
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
+    // Apenas imagens que realmente precisam de lazy + críticas que devem ficar visíveis (logos e provas sociais)
+    const images = document.querySelectorAll('img[loading="lazy"], .proof-image, img.streaming-logo');
+    const supportsIO = 'IntersectionObserver' in window;
+
+    const reveal = (img) => {
+        img.style.opacity = '1';
+    };
+
+    if (supportsIO) {
+        const imageObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    reveal(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { root: null, rootMargin: '200px 0px', threshold: 0 });
+
+        images.forEach(img => {
+            // Não esconda logos de streaming e provas sociais inicialmente no mobile
+            if (img.classList.contains('proof-image') || img.classList.contains('streaming-logo')) {
                 img.style.opacity = '1';
-                imageObserver.unobserve(img);
+            } else {
+                img.style.opacity = '0';
+            }
+            img.style.transition = 'opacity 0.5s ease';
+            imageObserver.observe(img);
+        });
+    } else {
+        // Fallback: se IO não existir, garanta visibilidade
+        images.forEach(img => {
+            reveal(img);
+        });
+    }
+
+    // Fallback de segurança: após o load, qualquer imagem ainda oculta é exibida
+    window.addEventListener('load', () => {
+        document.querySelectorAll('img').forEach(img => {
+            if (getComputedStyle(img).opacity === '0') {
+                img.style.opacity = '1';
             }
         });
-    });
-    
-    images.forEach(img => {
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.5s ease';
-        imageObserver.observe(img);
     });
 }
 

@@ -1947,8 +1947,8 @@ html {
    - Altere os valores abaixo (max-width / max-height) para ajustar conforme necessário */
 @media (max-width: 468px) {
   .streaming-logo img {
-    max-width: 90%;   /* antes: 180px (x2) */
-    max-height: 100%;  /* antes: 100px (x2) */
+    max-width: 200%;   /* antes: 180px (x2) */
+    max-height: 200%;  /* antes: 100px (x2) */
     /* Dica: se quiser que as logos ocupem toda a largura disponível, use:
        width: 100%; height: auto; e ajuste o grid para 1 coluna se necessário. */
   }
@@ -1957,22 +1957,76 @@ html {
   */
 }
 
-/* Overrides finais para <=480px: ampliar logos em 200% e garantir 1 coluna
-   - Aplica no <img class="streaming-logo"> (e no .streaming-logo por compatibilidade)
-   - Define largura responsiva sem distorção e força 1 coluna no grid */
+/* Overrides finais para <=480px: logos grandes, centralizadas e com margens ajustadas */
 @media (max-width: 480px) {
-  img.streaming-logo, .streaming-logo {
-    display: block;
-    margin: 0 auto;
-    width: min(420px, 100%); /* respeita o container e mantém grande em telas pequenas */
-    height: auto;
-    padding: 8px;
-  }
-
-  /* Garante 1 coluna para acomodar logos grandes no mobile */
+  /* Grid: 1 coluna e itens centralizados em ambos os eixos */
   .streamings .streaming-grid, .streaming-grid {
     grid-template-columns: 1fr !important;
-    justify-items: center;
-    row-gap: 20px;
+    place-items: center !important;     /* equivale a align-items + justify-items */
+    justify-items: center !important;
+    row-gap: 16px !important;           /* respiro vertical mais compacto */
+    column-gap: 0 !important;           /* sem espaçamento lateral oculto */
+    margin-left: auto; margin-right: auto;
+    padding-left: 8px; padding-right: 8px; /* evita colar nas bordas do viewport */
+  }
+
+  /* Logos: centralizadas, com margem vertical e sem limite de altura */
+  img.streaming-logo, .streaming-logo {
+    display: block !important;
+    margin: 1px auto 20px auto !important; /* centraliza e dá respiro vertical */
+    width: min(70vw, 350px) !important;    /* ocupa quase a largura toda do viewport */
+    max-width: 400px !important;           /* coerente com o breakpoint */
+    max-height: none !important;           /* remove travas de 80px/160px */
+    height: auto !important;
+    padding: 0 !important;                 /* evita perda de área útil */
+    object-fit: contain !important;        /* mantém proporção */
+    justify-self: center !important;       /* garante centrado no grid */
+    align-self: center !important;
+  }
+
+  /* Provas sociais: sem animação e com imagens visíveis */
+  .social-proof .carousel-container { overflow: visible; height: auto; }
+  .social-proof .carousel-track { display: grid; grid-template-columns: 1fr; row-gap: 18px; animation: none; width: 100%; transform: none !important; }
+  .social-proof .carousel-slide { margin: 0; flex: initial; }
+  .proof-image { margin: 0 auto; width: min(94vw, 380px); max-width: 100%; height: auto; opacity: 1 !important; }
+
+  /* Garantir visibilidade imediata das seções no mobile */
+  .streamings, .social-proof, .testimonials, .plans { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* Ajuste extra para <=468px: replicar centralização e margens para telas ainda menores */
+@media (max-width: 468px) {
+  .streamings .streaming-grid, .streaming-grid {
+    grid-template-columns: 1fr !important;
+    place-items: center !important;
+    row-gap: 14px !important;
+    column-gap: 0 !important;
+    padding-left: 6px; padding-right: 6px;
+  }
+  img.streaming-logo, .streaming-logo {
+    margin: 8px auto 14px auto !important;
+    width: min(98vw, 480px) !important;
+    max-width: 480px !important;
+    max-height: none !important;
+    height: auto !important;
+    object-fit: contain !important;
+    justify-self: center !important;
+    align-self: center !important;
+  }
+  .proof-image { width: min(95vw, 380px); }
+}
+
+@media (max-width: 480px) {
+  img.streaming-logo, .streaming-logo {
+    height: clamp(72px, 98vw, 188px) !important;
+    width: auto !important;
+    max-width: 92vw !important;
+    max-height: 84vh !important;
+    display: block !important;
+    margin: 8px auto 16px auto !important;
+    padding: 0 !important;
+    object-fit: contain !important;
+    justify-self: center !important;
+    align-self: center !important;
   }
 }
